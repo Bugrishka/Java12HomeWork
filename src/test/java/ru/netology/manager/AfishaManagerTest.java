@@ -22,14 +22,27 @@ public class AfishaManagerTest {
 
     @Test
     public void lastMovies() {
-        AfishaManager afisha = new AfishaManager(3);
+        AfishaManager afisha = new AfishaManager(4);
         afisha.add("Film 1");
         afisha.add("Film 2");
         afisha.add("Film 3");
         afisha.add("Film 4");
         afisha.add("Film 5");
+        afisha.add("Film 6");
 
-        String[] expected = { "Film 5", "Film 4", "Film 3" };
+        String[] expected = { "Film 6", "Film 5", "Film 4", "Film 3" };
+        String[] actual = afisha.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void lastMoviesIfTwoMovies() {
+        AfishaManager afisha = new AfishaManager(4);
+        afisha.add("Film 1");
+        afisha.add("Film 2");
+
+        String[] expected = { "Film 2", "Film 1", };
         String[] actual = afisha.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
